@@ -1,6 +1,6 @@
 # CI/CD Pipeline Lab - Jenkins and GitHub Integration
 
-This project demonstrates the integration of Jenkins with GitHub for automated CI/CD. The project uses a polling-based approach to detect changes in the GitHub repository.
+This project demonstrates the integration of Jenkins with GitHub for automated CI/CD. The project uses both polling and webhook-based approaches to detect changes in the GitHub repository.
 
 ## Project Overview
 
@@ -123,4 +123,15 @@ The pipeline is configured to send email notifications to your college email add
 - [x] Polling-based approach (checking every 5 minutes)
 - [x] Pipeline stages (checkout, build, test, deploy)
 - [x] Email notifications
-- [x] Documentation of setup and verification # Test change
+- [x] Documentation of setup and verification
+- [x] GitHub webhook integration for instant builds
+- [x] Webhook testing and verification
+
+## CI/CD Pipeline
+This project uses Jenkins for continuous integration and deployment:
+- Automated testing with pytest
+- Code coverage reporting
+- Email notifications for build status
+- GitHub webhook integration for automatic builds
+- Instant build triggers on code push
+- Real-time build status updates
