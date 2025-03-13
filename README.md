@@ -123,4 +123,4 @@ The pipeline is configured to send email notifications to your college email add
 - [x] Polling-based approach (checking every 5 minutes)
 - [x] Pipeline stages (checkout, build, test, deploy)
 - [x] Email notifications
-- [x] Documentation of setup and verification 
+- [x] Documentation of setup and verification # Test change
