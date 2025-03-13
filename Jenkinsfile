@@ -64,9 +64,12 @@ pipeline {
                 <p>Build Duration: ${currentBuild.durationString}</p>
                 <p>Git Commit: ${GIT_COMMIT}</p>
                 <p>Git Branch: ${GIT_BRANCH}</p>
+                <p>Changes: ${currentBuild.changeSets}</p>
                 """,
-                to: 'rahican11@gmail.com',
-                mimeType: 'text/html'
+                to: 'rpatel5566ceonstogac.on.ca',
+                mimeType: 'text/html',
+                replyTo: 'rpatel5566ceonstogac.on.ca',
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
             )
         }
         failure {
@@ -79,10 +82,13 @@ pipeline {
                 <p>Build Duration: ${currentBuild.durationString}</p>
                 <p>Git Commit: ${GIT_COMMIT}</p>
                 <p>Git Branch: ${GIT_BRANCH}</p>
+                <p>Changes: ${currentBuild.changeSets}</p>
                 <p>Please check the build logs for more details.</p>
                 """,
-                to: 'rahican11@gmail.com',
-                mimeType: 'text/html'
+                to: 'rpatel5566ceonstogac.on.ca',
+                mimeType: 'text/html',
+                replyTo: 'rpatel5566ceonstogac.on.ca',
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
             )
         }
     }
