@@ -67,9 +67,7 @@ pipeline {
                 <p>Changes: ${currentBuild.changeSets}</p>
                 """,
                 to: 'rpatel5566ceonstogac.on.ca',
-                mimeType: 'text/html',
-                replyTo: 'rpatel5566ceonstogac.on.ca',
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                mimeType: 'text/html'
             )
         }
         failure {
@@ -86,9 +84,7 @@ pipeline {
                 <p>Please check the build logs for more details.</p>
                 """,
                 to: 'rpatel5566ceonstogac.on.ca',
-                mimeType: 'text/html',
-                replyTo: 'rpatel5566ceonstogac.on.ca',
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                mimeType: 'text/html'
             )
         }
     }
