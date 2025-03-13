@@ -61,7 +61,9 @@ pipeline {
                 <h2>Build Status: SUCCESS</h2>
                 <p>Build Number: ${BUILD_NUMBER}</p>
                 <p>Build URL: ${BUILD_URL}</p>
-                <p>Changes: ${CHANGES}</p>
+                <p>Build Duration: ${currentBuild.durationString}</p>
+                <p>Git Commit: ${GIT_COMMIT}</p>
+                <p>Git Branch: ${GIT_BRANCH}</p>
                 """,
                 to: 'rahican11@gmail.com',
                 mimeType: 'text/html'
@@ -74,7 +76,9 @@ pipeline {
                 <h2>Build Status: FAILURE</h2>
                 <p>Build Number: ${BUILD_NUMBER}</p>
                 <p>Build URL: ${BUILD_URL}</p>
-                <p>Changes: ${CHANGES}</p>
+                <p>Build Duration: ${currentBuild.durationString}</p>
+                <p>Git Commit: ${GIT_COMMIT}</p>
+                <p>Git Branch: ${GIT_BRANCH}</p>
                 <p>Please check the build logs for more details.</p>
                 """,
                 to: 'rahican11@gmail.com',
