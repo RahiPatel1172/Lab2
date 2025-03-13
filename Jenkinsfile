@@ -9,7 +9,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main',
+                    url: 'https://github.com/RahiPatel1172/Lab2.git',
+                    credentialsId: 'github-credentials'
                 echo 'Checking out code from GitHub repository'
             }
         }
