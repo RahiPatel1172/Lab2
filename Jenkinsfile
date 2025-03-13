@@ -17,8 +17,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+                    echo "Setting up Python environment..."
                     python3 -m venv venv
                     . venv/bin/activate
+                    echo "Installing dependencies..."
                     pip install -r requirements.txt
                     echo "Build completed successfully"
                 '''
@@ -28,9 +30,11 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
+                    echo "Activating virtual environment..."
                     . venv/bin/activate
-                    pytest tests/ --cov=app --cov-report=term-missing
-                    echo "Tests completed successfully"
+                    echo "Running tests with coverage..."
+                    python -m pytest tests/ -v --cov=app --cov-report=term-missing
+                    echo "Tests completed"
                 '''
             }
         }
@@ -53,24 +57,27 @@ pipeline {
             emailext (
                 subject: "Pipeline Succeeded: ${currentBuild.fullDisplayName}",
                 body: """
-                Build Status: SUCCESS
-                Build Number: ${BUILD_NUMBER}
-                Build URL: ${BUILD_URL}
-                Changes: ${CHANGES}
+                <h2>Build Status: SUCCESS</h2>
+                <p>Build Number: ${BUILD_NUMBER}</p>
+                <p>Build URL: ${BUILD_URL}</p>
+                <p>Changes: ${CHANGES}</p>
                 """,
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                to: 'rahican11@gmail.com',
+                mimeType: 'text/html'
             )
         }
         failure {
             emailext (
                 subject: "Pipeline Failed: ${currentBuild.fullDisplayName}",
                 body: """
-                Build Status: FAILURE
-                Build Number: ${BUILD_NUMBER}
-                Build URL: ${BUILD_URL}
-                Changes: ${CHANGES}
+                <h2>Build Status: FAILURE</h2>
+                <p>Build Number: ${BUILD_NUMBER}</p>
+                <p>Build URL: ${BUILD_URL}</p>
+                <p>Changes: ${CHANGES}</p>
+                <p>Please check the build logs for more details.</p>
                 """,
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                to: 'rahican11@gmail.com',
+                mimeType: 'text/html'
             )
         }
     }
