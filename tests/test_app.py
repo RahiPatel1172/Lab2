@@ -22,4 +22,24 @@ def test_hello_endpoint(client):
 def test_health_endpoint(client):
     response = client.get('/health')
     assert response.status_code == 200
-    assert b'Service is healthy!' in response.data 
+    assert b'Service is healthy!' in response.data
+
+def test_404_endpoint(client):
+    response = client.get('/nonexistent')
+    assert response.status_code == 404
+
+def test_health_endpoint_post(client):
+    response = client.post('/health')
+    assert response.status_code == 405  # Method Not Allowed
+
+def test_hello_endpoint_post(client):
+    response = client.post('/')
+    assert response.status_code == 405  # Method Not Allowed
+
+def test_health_endpoint_put(client):
+    response = client.put('/health')
+    assert response.status_code == 405  # Method Not Allowed
+
+def test_health_endpoint_delete(client):
+    response = client.delete('/health')
+    assert response.status_code == 405  # Method Not Allowed 
