@@ -10,10 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Starting Git checkout...'
-                git branch: 'main',
-                    url: 'https://github.com/RahiPatel1172/Lab2.git',
-                    credentialsId: 'github-credentials',
-                    poll: true
+                checkout scm
                 echo 'Git checkout completed successfully'
             }
         }
