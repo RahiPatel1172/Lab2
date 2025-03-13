@@ -9,10 +9,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'Starting Git checkout...'
                 git branch: 'main',
                     url: 'https://github.com/RahiPatel1172/Lab2.git',
-                    credentialsId: 'github-credentials'
-                echo 'Checking out code from GitHub repository'
+                    credentialsId: 'github-credentials',
+                    poll: true
+                echo 'Git checkout completed successfully'
             }
         }
         
